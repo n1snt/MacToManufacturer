@@ -49,7 +49,7 @@ class ConvertManufFile():
         csv file.
         """
 
-        with open(self.outputPath, 'w', encoding="utf8", newline='') as csvfile:
+        with open(self.outputPath, 'w', encoding="utf8", newline="") as csvfile:
             csvwriter = csv.writer(csvfile)
             csvwriter.writerows(text)
 
