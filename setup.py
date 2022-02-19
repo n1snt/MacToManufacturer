@@ -20,7 +20,9 @@ setuptools.setup(
         "License :: Apache License :: 2.0",
         "Operating System :: OS Independent",
     ],
-    package_dir={"": "src/MacToManufacturer"},
-    packages=setuptools.find_packages(where="src/MacToManufacturer"),
+    package_dir={"": "src"},
+    packages=setuptools.find_packages(where="src"),
+    include_package_data=True,
+    package_data={'': ['data/manuf.csv']},
     python_requires=">=3.6",
 )
