@@ -14,10 +14,10 @@ jobs:
           fetch-depth: 0
 
       - name: Create csv file
-        run: cd src/CreateCSV && python3 main.py
+        run: cd scripts/ && python3 create_csv.py
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
         with:
           name: manuf.csv
-          path: src/manuf.csv
+          path: manuf.csv
