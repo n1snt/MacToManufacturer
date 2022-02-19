@@ -2,20 +2,18 @@ import csv
 
 class MacToMan():
 
-    def __init__(self, macaddress) -> None:
-        self.macaddress = macaddress
-
+    def __init__(self) -> None:
         # Load CSV file from local storage.
-        self.csv_file = csv.reader(open('../manuf.csv', "r", encoding="utf8"))
+        self.csv_file = csv.reader(open('manuf.csv', "r", encoding="utf8"))
 
-    def search(self) -> str:
+    def search(self, macaddress) -> str:
         """
         This method searches for macaddress in CSV file
         & returns value.
         """
 
         # Get only the first 3 octlets of macaddress.
-        macaddr = self.macaddress[:8]
+        macaddr = macaddress[:8]
         # Replace dashes if exist.
         macaddr = macaddr.replace("-",":")
 
