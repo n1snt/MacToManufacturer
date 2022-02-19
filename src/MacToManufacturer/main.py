@@ -1,10 +1,14 @@
 import csv
+import pkg_resources
+from io import BytesIO
 
 class MacToMan():
 
     def __init__(self) -> None:
+
         # Load CSV file from local storage.
-        self.csv_file = csv.reader(open('manuf.csv', "r", encoding="utf8"))
+        stream = pkg_resources.resource_stream(__name__, 'data/manuf.csv').read().decode().splitlines()
+        self.csv_file = csv.reader(stream)
 
     def search(self, macaddress) -> str:
         """
@@ -13,9 +17,7 @@ class MacToMan():
         """
 
         # Get only the first 3 octlets of macaddress.
-        macaddr = macaddress[:8]
-        # Replace dashes if exist.
-        macaddr = macaddr.replace("-",":")
+        macaddr = macaddress[:8].replace("-",":")
 
         # Search the csv file.
         for row in self.csv_file:
