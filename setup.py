@@ -1,0 +1,26 @@
+import setuptools
+
+with open("README.md", "r", encoding="utf-8") as fh:
+    long_description = fh.read()
+
+setuptools.setup(
+    name="MacToManufacturer",
+    version="0.0.1",
+    author="Nishant Bhandari",
+    author_email="getrooted0019@hotmail.com",
+    description="Library to find manufacturer of a device using macaddress.",
+    long_description=long_description,
+    long_description_content_type="text/markdown",
+    url="https://github.com/n1snt/MacToManufacturer",
+    project_urls={
+        "Bug Tracker": "https://github.com/n1snt/MacToManufacturer/issues",
+    },
+    classifiers=[
+        "Programming Language :: Python :: 3",
+        "License :: Apache License :: 2.0",
+        "Operating System :: OS Independent",
+    ],
+    package_dir={"": "src/MacToManufacturer"},
+    packages=setuptools.find_packages(where="src/MacToManufacturer"),
+    python_requires=">=3.6",
+)
