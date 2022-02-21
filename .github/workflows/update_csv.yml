@@ -32,15 +32,20 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: ${{ github.ref }}
 
-      - name: Bump tag version.
-        uses: anothrNick/github-tag-action@1.36.0
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          WITH_V: true
-
       # Upload artifact.
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
         with:
           name: manuf.csv
           path: manuf.csv
+
+  bump-version-tag:
+    needs: create-csv
+    runs-on: ubuntu-latest
+    steps:
+    - name: Bump version and push tag
+      uses: anothrNick/github-tag-action@1.36.0
+      env:
+        INITIAL_VERSION: 0.0.1
+        GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
+        WITH_V: true
