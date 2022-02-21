@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="MacToManufacturer",
-    version="0.1.0",
+    version="0.2.0",
     author="Nishant Bhandari",
     author_email="getrooted0019@hotmail.com",
     description="Library to find manufacturer of a device using macaddress.",
