@@ -31,7 +31,7 @@ jobs:
     - name: Push changes
       uses: ad-m/github-push-action@master
       with:
-        github_token: ${{ secrets.GIT_TOKEN }}
+        github_token: ${{ secrets.GITHUB_TOKEN }}
         branch: ${{ github.ref }}
 
   bump-version-tag:
@@ -47,5 +47,5 @@ jobs:
       uses: anothrNick/github-tag-action@1.36.0
       env:
         INITIAL_VERSION: 0.0.1
-        GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         WITH_V: true
