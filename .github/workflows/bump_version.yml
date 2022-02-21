@@ -19,7 +19,7 @@ jobs:
 
     - name: Bump version in code
       run: |
-        bumpversion --current-version 0.0.1 minor setup.py
+        bumpversion minor setup.py
         git add .
 
     - name: Commit files
