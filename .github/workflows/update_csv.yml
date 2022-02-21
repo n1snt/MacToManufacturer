@@ -1,0 +1,46 @@
+name: Update CSV
+
+on:
+  schedule:
+    # This will run the action on every sunday.
+    - cron: '0 0 * * SUN'
+
+jobs:
+  create_csv:
+    name: Create CSV file
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Create csv file
+        run: cd scripts/ && python3 create_csv.py
+
+      # Push to repo.
+      # Make sure to add #patch in commit message.
+      - name: Commit files
+        run: |
+          git config --local user.email "getrooted0019@hotmail.com"
+          git config --local user.name "Nishant"
+          git commit -m "Version bump. #patch" -a
+
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
+
+      - name: Bump tag version.
+        uses: anothrNick/github-tag-action@1.36.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          WITH_V: true
+
+      # Upload artifact.
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: manuf.csv
+          path: manuf.csv
