@@ -17,16 +17,19 @@ jobs:
         sudo apt-get install python3 python3-pip
         pip3 install bumpversion
 
+    - name: Extract version from tag
+      uses: damienaicheh/extract-version-from-tag-action@v1.0.0
+
     - name: Bump version in code
       run: |
-        bumpversion --current-version 0.0.1 minor setup.py
+        bumpversion --current-version ${{ env.MAJOR }}.${{ env.MINOR }}.${{ env.PATCH }} minor setup.py
         git add .
 
     - name: Commit files
       run: |
         git config --local user.email "getrooted0019@hotmail.com"
         git config --local user.name "Nishant"
-        git commit -m "Version bump." -a
+        git commit -m "Version bump" -a
 
     - name: Push changes
       uses: ad-m/github-push-action@master
