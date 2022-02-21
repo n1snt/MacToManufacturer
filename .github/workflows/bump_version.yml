@@ -14,7 +14,9 @@ jobs:
         fetch-depth: 0
 
     - name: Install tools.
-      run: sudo apt-get install python3 python3-pip
+      run: |
+        sudo apt-get install python3 python3-pip
+        pip3 install bumpversion
 
     - name: Bump version in code.
       run: |
