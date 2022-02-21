@@ -4,10 +4,9 @@ on:
   push
 
 jobs:
-  build:
+  bump-version-code:
     runs-on: ubuntu-latest
     steps:
-
     - uses: actions/checkout@v2
       with:
         persist-credentials: false
@@ -35,6 +34,10 @@ jobs:
         github_token: ${{ secrets.GIT_TOKEN }}
         branch: ${{ github.ref }}
 
+  bump-version-tag:
+    needs: bump-version-code
+    runs-on: ubuntu-latest
+    steps:
     - name: Bump version and push tag
       uses: anothrNick/github-tag-action@1.36.0
       env:
