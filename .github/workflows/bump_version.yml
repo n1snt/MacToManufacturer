@@ -19,7 +19,7 @@ jobs:
 
     - name: Bump version in code
       run: |
-        bumpversion minor setup.py
+        bumpversion --current-version 0.0.1 minor setup.py
         git add .
 
     - name: Commit files
@@ -46,6 +46,6 @@ jobs:
     - name: Bump version and push tag
       uses: anothrNick/github-tag-action@1.36.0
       env:
-        INITIAL_VERSION: 0.1.0
+        INITIAL_VERSION: 0.0.1
         GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
         WITH_V: true
