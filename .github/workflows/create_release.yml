@@ -29,6 +29,7 @@ jobs:
           path: dist/
 
   create-github-release:
+    needs: build-package
     name: Create github release
     runs-on: ubuntu-latest
     steps:
@@ -47,6 +48,7 @@ jobs:
           files: dist/MacToManufacturer-*
 
   create-pypi-release:
+    needs: build-package
     name: Create pypi release
     runs-on: ubuntu-latest
     steps:
