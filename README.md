@@ -24,3 +24,15 @@ print(results)
 macToManObj.close()
 ```
 <b>Note:</b> MacToManufacturer uses a csv file and searches through it so please call the close function as soon as you are done using MacToMan.
+
+### Installation:
+```
+pip3 install MacToManufacturer
+```
+### How does this work?
+This library contains csv file which contains the starting 3 octlets and the manufacturer.
+MacToMan searches through this csv file and returns the manufacturer.
+#### How the csv is generated?
+Wireshark has a file which contains all the IEEE lists of mac addresses and manufacturers & more.
+The file is names manuf.
+There is a script named as generate_csv.py in script/, It downloads the latest manuf file and converts it to a csv file.
