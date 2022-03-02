@@ -1,6 +1,5 @@
 import csv
 import pkg_resources
-from io import BytesIO
 
 class MacToMan():
 
@@ -26,6 +25,3 @@ class MacToMan():
                 return row[1]
 
         return None
-
-    def close(self) -> None:
-        self.csv_file.close()
