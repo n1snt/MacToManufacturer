@@ -1,10 +1,9 @@
 name: Update CSV
 
 on:
-  workflow_dispatch
-  #schedule:
+  schedule:
     # This will run the action on every sunday.
-    #- cron: '0 0 * * SUN'
+    - cron: '0 0 * * SUN'
 
 jobs:
   create_csv:
