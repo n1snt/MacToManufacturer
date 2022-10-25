@@ -40,7 +40,7 @@ jobs:
           path: manuf.csv
 
   bump-version-tag:
-    needs: create-csv
+    needs: create_csv
     runs-on: ubuntu-latest
     steps:
     - name: Bump version and push tag
