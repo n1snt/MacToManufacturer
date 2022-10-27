@@ -1,9 +1,10 @@
 name: Update CSV
 
 on:
-  schedule:
+  workflow_dispatch
+  #schedule:
     # This will run the action on every sunday.
-    - cron: '0 0 * * SUN'
+    #- cron: '0 0 * * SUN'
 
 jobs:
   create_csv:
@@ -15,8 +16,8 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Create csv file
-        run: cd scripts/ && python3 create_csv.py
+      - name: Create & replace
+        run: cd scripts/ && python3 create_csv.py && cd .. && cp manuf.csv src/MacToManufacturer/data/manuf.csv
 
       # Push to repo.
       # Make sure to add #patch in commit message.
